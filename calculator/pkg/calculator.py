@@ -24,9 +24,11 @@ class Calculator:
         """Evaluate a space-separated infix expression.
 
         Returns None for an empty or whitespace-only expression. Raises
-        ValueError on an invalid token, an unbalanced expression, or a
-        division by zero.
+        TypeError when ``expression`` is not a string, and ValueError on an
+        invalid token, an unbalanced expression, or a division by zero.
         """
+        if not isinstance(expression, str):
+            raise TypeError("expression must be a string")
         if not expression or expression.isspace():
             return None
         tokens = expression.strip().split()
