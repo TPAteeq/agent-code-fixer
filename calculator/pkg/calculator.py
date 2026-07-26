@@ -12,12 +12,14 @@ class Calculator:
             "-": lambda a, b: a - b,
             "*": lambda a, b: a * b,
             "/": lambda a, b: a / b,
+            "%": lambda a, b: a % b,
         }
         self.precedence = {
             "+": 1,
             "-": 1,
             "*": 2,
             "/": 2,
+            "%": 2,
         }
 
     def evaluate(self, expression):
@@ -72,6 +74,6 @@ class Calculator:
 
         b = values.pop()
         a = values.pop()
-        if operator == "/" and b == 0:
+        if operator in ("/", "%") and b == 0:
             raise ValueError("division by zero")
         values.append(self.operators[operator](a, b))
