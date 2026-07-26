@@ -33,6 +33,7 @@ class Calculator:
         return self._evaluate_infix(tokens)
 
     def _evaluate_infix(self, tokens):
+        """Evaluate the token list with a shunting-yard pass, honoring precedence."""
         values = []
         operators = []
 
