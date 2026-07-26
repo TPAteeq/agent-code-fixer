@@ -16,6 +16,12 @@ class Calculator:
         }
 
     def evaluate(self, expression):
+        """Evaluate a space-separated infix expression.
+
+        Returns None for an empty or whitespace-only expression. Raises
+        ValueError on an invalid token, an unbalanced expression, or a
+        division by zero.
+        """
         if not expression or expression.isspace():
             return None
         tokens = expression.strip().split()
