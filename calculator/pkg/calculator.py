@@ -1,6 +1,11 @@
 # calculator/pkg/calculator.py
 
 class Calculator:
+    """A small infix expression evaluator with operator precedence.
+
+    Supports +, -, *, and / over space-separated tokens; see evaluate().
+    """
+
     def __init__(self):
         self.operators = {
             "+": lambda a, b: a + b,
