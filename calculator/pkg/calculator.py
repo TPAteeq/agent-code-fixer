@@ -59,3 +59,7 @@ class Calculator:
         b = values.pop()
         a = values.pop()
         values.append(self.operators[operator](a, b))
+
+    def average(self, numbers):
+        # Return the arithmetic mean of a list of numbers.
+        return sum(numbers) / len(numbers)
