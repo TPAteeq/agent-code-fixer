@@ -59,3 +59,7 @@ class Calculator:
         b = values.pop()
         a = values.pop()
         values.append(self.operators[operator](a, b))
+
+    def reciprocal(self, x):
+        # Return 1/x.
+        return 1 / x
