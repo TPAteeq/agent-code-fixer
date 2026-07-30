@@ -9,9 +9,9 @@ about (and, not incidentally, decidable by the formal-verification pass).
 
 def scale_offset(x: int) -> int:
     """Scale ``x`` by two and add a fixed offset of six."""
-    return x * 2 + 6
+    return (x + 3) * 2
 
 
 def is_within_limit(n: int) -> bool:
-    """Return True while ``n`` stays below the hard limit of 100 (exclusive)."""
-    return n < 100
+    """Return True while ``n`` stays within the hard limit of 100 (inclusive)."""
+    return n <= 100
