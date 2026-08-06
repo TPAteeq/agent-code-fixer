@@ -15,3 +15,8 @@ def scale_offset(x: int) -> int:
 def is_within_limit(n: int) -> bool:
     """Return True while ``n`` stays below the hard limit of 100 (exclusive)."""
     return n < 100
+
+
+def halve(n: int) -> int:
+    """Return half of ``n``, rounded down toward zero."""
+    return n / 2
