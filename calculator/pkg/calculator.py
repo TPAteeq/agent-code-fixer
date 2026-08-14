@@ -1,27 +1,43 @@
 # calculator/pkg/calculator.py
 
 class Calculator:
+    """A small infix expression evaluator with operator precedence.
+
+    Supports +, -, *, and / over space-separated tokens; see evaluate().
+    """
+
     def __init__(self):
         self.operators = {
             "+": lambda a, b: a + b,
             "-": lambda a, b: a - b,
             "*": lambda a, b: a * b,
             "/": lambda a, b: a / b,
+            "%": lambda a, b: a % b,
         }
         self.precedence = {
             "+": 1,
             "-": 1,
             "*": 2,
             "/": 2,
+            "%": 2,
         }
 
     def evaluate(self, expression):
+        """Evaluate a space-separated infix expression.
+
+        Returns None for an empty or whitespace-only expression. Raises
+        TypeError when ``expression`` is not a string, and ValueError on an
+        invalid token, an unbalanced expression, or a division by zero.
+        """
+        if not isinstance(expression, str):
+            raise TypeError("expression must be a string")
         if not expression or expression.isspace():
             return None
         tokens = expression.strip().split()
         return self._evaluate_infix(tokens)
 
     def _evaluate_infix(self, tokens):
+        """Evaluate the token list with a shunting-yard pass, honoring precedence."""
         values = []
         operators = []
 
@@ -58,4 +74,6 @@ class Calculator:
 
         b = values.pop()
         a = values.pop()
+        if operator in ("/", "%") and b == 0:
+            raise ValueError("division by zero")
         values.append(self.operators[operator](a, b))
