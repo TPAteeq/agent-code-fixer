@@ -24,6 +24,10 @@ class TestCalculator(unittest.TestCase):
         result = self.calculator.evaluate("10 / 2")
         self.assertEqual(result, 5)
 
+    def test_modulo(self):
+        result = self.calculator.evaluate("10 % 3")
+        self.assertEqual(result, 1)
+
     def test_nested_expression(self):
         result = self.calculator.evaluate("3 * 4 + 5")
         self.assertEqual(result, 17)
